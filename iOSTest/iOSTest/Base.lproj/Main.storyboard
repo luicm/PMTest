@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5rB-tx-HtU">
+    <device id="ipad12_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Grid View Controller-->
+        <scene sceneID="MMa-bG-6np">
+            <objects>
+                <collectionViewController storyboardIdentifier="VideosViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BjL-JB-LCR" customClass="GridViewController" customModule="iOSTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="TbP-Cl-DuQ">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="911"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cgd-dY-FbD">
+                            <size key="itemSize" width="300" height="300"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="BjL-JB-LCR" id="ngO-Do-tIj"/>
+                            <outlet property="delegate" destination="BjL-JB-LCR" id="VOd-t2-TuZ"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="e5n-sp-Fef"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pOp-sx-uCQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2038" y="-33"/>
+        </scene>
+        <!--Player View Controller-->
+        <scene sceneID="EM2-lf-AIG">
+            <objects>
+                <viewController storyboardIdentifier="PlayerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4ib-ug-7rO" customClass="PlayerViewController" customModule="iOSTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qHX-YM-kw8">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6kk-gP-SHc" customClass="PlayerView" customModule="iOSTest" customModuleProvider="target">
+                                <rect key="frame" x="107.5" y="0.0" width="809" height="455"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="6kk-gP-SHc" secondAttribute="height" multiplier="16:9" id="iFz-VU-MGz"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="hd8-a8-Qe5">
+                                <rect key="frame" x="477" y="182.5" width="70" height="90.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Video" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2p1-D7-VSK">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemBlueColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBg-j8-y58">
+                                        <rect key="frame" x="20" y="60.5" width="30" height="30"/>
+                                        <connections>
+                                            <action selector="playPause:" destination="4ib-ug-7rO" eventType="touchUpInside" id="Dg6-R1-uya"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="TPN-uZ-svj"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="6kk-gP-SHc" secondAttribute="bottom" id="RtH-jf-dXe"/>
+                            <constraint firstItem="hd8-a8-Qe5" firstAttribute="centerY" secondItem="TPN-uZ-svj" secondAttribute="centerY" id="XCa-hl-kuq"/>
+                            <constraint firstItem="6kk-gP-SHc" firstAttribute="centerX" secondItem="TPN-uZ-svj" secondAttribute="centerX" id="g9s-3v-WbQ"/>
+                            <constraint firstItem="hd8-a8-Qe5" firstAttribute="centerX" secondItem="TPN-uZ-svj" secondAttribute="centerX" id="hfk-rW-BVB"/>
+                            <constraint firstItem="6kk-gP-SHc" firstAttribute="top" secondItem="qHX-YM-kw8" secondAttribute="top" id="ib6-9M-Rvf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="playPauseButton" destination="MBg-j8-y58" id="HRW-Rt-ZPm"/>
+                        <outlet property="playerView" destination="6kk-gP-SHc" id="34n-nU-On9"/>
+                        <outlet property="statusLabel" destination="2p1-D7-VSK" id="KdH-Hj-mip"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gvh-Nq-cpJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2039" y="537"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="Fmy-Wi-b6V">
+            <objects>
+                <viewController id="5rB-tx-HtU" customClass="RootViewController" customModule="iOSTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YYq-vq-qMi">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Stz-oE-egx" userLabel="Grid Container View">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="911"/>
+                                <connections>
+                                    <segue destination="BjL-JB-LCR" kind="embed" id="SSB-88-SaR"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NMe-fZ-BZf" userLabel="Player Container View">
+                                <rect key="frame" x="0.0" y="911" width="1024" height="455"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="NMe-fZ-BZf" secondAttribute="height" multiplier="16:9" priority="999" id="WV0-rY-mIZ"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="4ib-ug-7rO" kind="embed" id="hlK-oK-cBj"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ugt-2I-o3F"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="NMe-fZ-BZf" firstAttribute="top" secondItem="Stz-oE-egx" secondAttribute="bottom" id="0qv-hc-Te3"/>
+                            <constraint firstItem="Stz-oE-egx" firstAttribute="leading" secondItem="YYq-vq-qMi" secondAttribute="leading" id="6FP-Kr-2zi"/>
+                            <constraint firstAttribute="bottom" secondItem="NMe-fZ-BZf" secondAttribute="bottom" id="6ig-t3-3EL"/>
+                            <constraint firstAttribute="trailing" secondItem="Stz-oE-egx" secondAttribute="trailing" id="IGg-gi-t1a"/>
+                            <constraint firstItem="NMe-fZ-BZf" firstAttribute="leading" secondItem="YYq-vq-qMi" secondAttribute="leading" id="QXF-ny-j7a"/>
+                            <constraint firstAttribute="trailing" secondItem="NMe-fZ-BZf" secondAttribute="trailing" id="RNa-Wn-RrT"/>
+                            <constraint firstItem="NMe-fZ-BZf" firstAttribute="height" relation="lessThanOrEqual" secondItem="YYq-vq-qMi" secondAttribute="height" multiplier="1/3" id="UL0-sS-04D"/>
+                            <constraint firstItem="Stz-oE-egx" firstAttribute="top" secondItem="YYq-vq-qMi" secondAttribute="top" id="jGK-Ii-VRs"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eE9-cN-8Fh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3035" y="255"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
