@@ -40,6 +40,9 @@ extension PlayerViewController: PlayerControllerDelegate {
     }
 
     func playbackFinished() {
-        statusLabel.text = "No Video"
+        // since i yet not understand the full app, sending the UI code directly to the main thread in this point seams the most positive option 
+        DispatchQueue.main.async { [weak self] in
+            self?.statusLabel.text = "No Video"
+        }
     }
 }

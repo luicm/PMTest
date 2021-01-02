@@ -29,9 +29,12 @@ final class PlayerController {
 
         delegate?.playbackStarted()
 
+        // We can say here that we want the result in the main thread, by changing the value of queue to '.mail'
         NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime,
                                                object: video.playerItem,
                                                queue: delegateQueue) { [delegate] _ in
+            
+            
             delegate?.playbackFinished()
         }
     }
