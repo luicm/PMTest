@@ -29,8 +29,11 @@ final class VideoCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-
+    
     override func prepareForReuse() {
         video = nil
+        // it is needed to reset the status to hidden when preparing the cell for reuse,
+        // in order to properly show or not the correct label
+        hdImageView.isHidden = true
     }
 }
