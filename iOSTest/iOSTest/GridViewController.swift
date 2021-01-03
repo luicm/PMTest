@@ -66,7 +66,7 @@ final class GridViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        playerController.play(videos[indexPath.row])
+        playerController.play(videos[indexPath.row]) //??? why not item
     }
 }
 
