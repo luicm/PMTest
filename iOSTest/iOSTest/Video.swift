@@ -20,15 +20,13 @@ final class Video: Decodable {
     var videoURL: URL
 
     lazy var attributedDescription: NSAttributedString = {
-
-        // TODO: replace the "[]" markers with italic formatting
-
-        NSAttributedString(string: description, attributes: [.font: UIFont.preferredFont(forTextStyle: .caption2)])
+        applyItalicAttribute(text: description)
     }()
 
-    lazy var playerItem: AVPlayerItem = {
+    // change lazy var to computed property solves memory issues
+    var playerItem: AVPlayerItem {
         AVPlayerItem(url: videoURL)
-    }()
+    }
 
     init(title: String, subtitle: String, description: String, hdQuality: Bool, thumbnailURL: URL, videoURL: URL) {
         self.title = title
