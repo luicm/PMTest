@@ -22,6 +22,9 @@ final class PlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         playerController.delegate = self
+        // Add notifications for device locked and unlocked
+        NotificationCenter.default.addObserver(self, selector: #selector(lockedDevice), name: UIApplication.protectedDataWillBecomeUnavailableNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(unlockedDevice), name: UIApplication.protectedDataDidBecomeAvailableNotification, object: nil)
     }
 
     deinit {
@@ -31,6 +34,15 @@ final class PlayerViewController: UIViewController {
     @IBAction func playPause(_ sender: UIButton) {
         playerController.playPause()
     }
+    // remove player layer to avoid the video to pause when device is locked
+    @objc func lockedDevice() {
+        playerController.detachPlayerLayer(playerView.playerLayer)
+    }
+    // recover layer when device unlocked, so we can continue playing the video
+    @objc func unlockedDevice() {
+        playerController.attachPlayerLayer(playerView.playerLayer)
+    }
+
 }
 
 extension PlayerViewController: PlayerControllerDelegate {

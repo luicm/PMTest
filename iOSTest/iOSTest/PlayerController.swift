@@ -23,10 +23,18 @@ final class PlayerController {
     }
     
     func play(_ video: Video) {
-        
-        player.replaceCurrentItem(with: AVPlayerItem(url: video.videoURL))
+                
+        // Create AVAudioSession to allow the audio video keep playing when device is locked.
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(AVAudioSession.Category.playback)
+        }
+        catch {
+            print(error)
+        }
+            
+        player.replaceCurrentItem(with: video.playerItem)
         player.play()
-        
         delegate?.playbackStarted()
         
         // We can say here that we want the result in the main thread, by changing the value of queue to '.main'
@@ -37,7 +45,7 @@ final class PlayerController {
             delegate?.playbackFinished()
         }
     }
-    
+
     func playPause() {
         if player.rate == 1 {
             player.pause()
@@ -45,6 +53,4 @@ final class PlayerController {
             player.play()
         }
     }
-    
-    
 }
